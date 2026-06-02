@@ -1,0 +1,47 @@
+﻿@model EventEase.Web.Models.Booking
+
+<h2>Create Booking</h2>
+
+<form asp-action="Create" method="post">
+
+    <div class="card p-4">
+
+        <div class="mb-3">
+            <label class="form-label">Event</label>
+
+            <select asp-for="EventId"
+                    asp-items="ViewBag.Events"
+                    class="form-select">
+            </select>
+
+            <span asp-validation-for="EventId"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Venue</label>
+
+            <select asp-for="VenueId"
+                    asp-items="ViewBag.Venues"
+                    class="form-select">
+            </select>
+
+            <span asp-validation-for="VenueId"
+                  class="text-danger"></span>
+        </div>
+
+        <button type="submit"
+                class="btn btn-success">
+            Save Booking
+        </button>
+
+    </div>
+
+</form>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

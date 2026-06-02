@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Venue>
+
+<h2>Venues</h2>
+
+<a class="btn btn-primary mb-3" href="/Venues/Create">
+    + Add New Venue
+</a>
+
+<table class="table table-striped align-middle">
+
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Capacity</th>
+            <th>Available</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var v in Model)
+        {
+            <tr>
+
+                <td>
+                    <img src="@v.ImageUrl"
+                         class="img-fluid"
+                         style="max-height:150px;" />
+                </td>
+
+                <td>@v.Name</td>
+                <td>@v.Location</td>
+                <td>@v.Capacity</td>
+
+                <td>
+                    @(v.IsAvailable ? "Yes" : "No")
+                </td>
+
+                <td>
+                    <a class="btn btn-sm btn-primary"
+                           href="/Venues/Edit/@v.VenueId">
+                        Edit
+                    </a>
+
+                    <a class="btn btn-sm btn-danger"
+                           href="/Venues/Delete/@v.VenueId">
+                        Delete
+                    </a>
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>

@@ -1,0 +1,12 @@
+﻿@model EventEase.Web.Models.EventType
+
+<div class="mb-3">
+    <label class="form-label">Event Type Name</label>
+
+    <input asp-for="Name"
+           class="form-control"
+           placeholder="e.g. Wedding, Conference, Concert" />
+
+    <span asp-validation-for="Name"
+          class="text-danger"></span>
+</div>

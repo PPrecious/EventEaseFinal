@@ -1,0 +1,52 @@
+﻿@model IEnumerable<EventEase.Web.Models.EventType>
+
+<div class="d-flex justify-content-between mb-3">
+
+    <h2>Event Types</h2>
+
+    <a asp-action="Create"
+           class="btn btn-primary">
+        + Add Event Type
+    </a>
+
+</div>
+
+<table class="table table-bordered bg-white">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.Name</td>
+
+                <td>
+
+                    <a asp-action="Edit"
+                           asp-route-id="@item.EventTypeId"
+                           class="btn btn-primary btn-sm">
+                        Edit
+                    </a>
+
+                    <a asp-action="Delete"
+                           asp-route-id="@item.EventTypeId"
+                           class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>

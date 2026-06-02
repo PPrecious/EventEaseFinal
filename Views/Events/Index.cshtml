@@ -1,0 +1,64 @@
+﻿@model IEnumerable<EventEase.Web.Models.Event>
+
+<div class="d-flex justify-content-between mb-3">
+
+    <h2>Events</h2>
+
+    <a asp-action="Create"
+           class="btn btn-primary">
+        + Add Event
+    </a>
+
+</div>
+
+<table class="table table-bordered bg-white">
+
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    <img src="@item.ImageUrl"
+                         width="80" />
+                </td>
+
+                <td>@item.Name</td>
+                <td>@item.EventType?.Name</td>
+                <td>@item.StartDate.ToShortDateString()</td>
+                <td>@item.EndDate.ToShortDateString()</td>
+
+                <td>
+
+                    <a asp-action="Edit"
+                           asp-route-id="@item.EventId"
+                           class="btn btn-primary btn-sm">
+                        Edit
+                    </a>
+
+                    <a asp-action="Delete"
+                           asp-route-id="@item.EventId"
+                           class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>

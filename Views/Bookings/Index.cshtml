@@ -1,0 +1,169 @@
+﻿@model IEnumerable<EventEase.Web.Models.Booking>
+
+@{
+    ViewData["Title"] = "Booking Overview";
+}
+
+<h2 class="mb-4">Booking Overview</h2>
+
+<a asp-action="Create"
+       class="btn btn-success mb-3">
+    Create Booking
+</a>
+
+<form method="get"
+      class="row g-3 mb-4">
+
+    <div class="col-md-3">
+        <input type="text"
+               name="search"
+               class="form-control"
+               placeholder="Search booking or event" />
+    </div>
+
+    <div class="col-md-2">
+
+        <select name="eventTypeId"
+                class="form-select">
+
+            <option value="">All Types</option>
+
+            @if (ViewBag.EventTypes != null)
+            {
+                foreach (var t in ViewBag.EventTypes)
+                {
+                    <option value="@t.EventTypeId">
+                        @t.Name
+                    </option>
+                }
+            }
+
+        </select>
+
+    </div>
+
+    <div class="col-md-2">
+
+        <select name="venueAvailable"
+                class="form-select">
+
+            <option value="">Availability</option>
+            <option value="true">Available</option>
+            <option value="false">Unavailable</option>
+
+        </select>
+
+    </div>
+
+    <div class="col-md-2">
+        <input type="date"
+               name="startDate"
+               class="form-control" />
+    </div>
+
+    <div class="col-md-2">
+        <input type="date"
+               name="endDate"
+               class="form-control" />
+    </div>
+
+    <div class="col-md-1">
+        <button class="btn btn-primary w-100">
+            Filter
+        </button>
+    </div>
+
+</form>
+
+<div class="table-responsive">
+
+    <table class="table table-bordered table-hover bg-white align-middle">
+
+        <thead class="table-dark">
+
+            <tr>
+                <th>ID</th>
+                <th>Event</th>
+                <th>Type</th>
+                <th>Venue</th>
+                <th>Location</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Date Booked</th>
+                <th>Actions</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@item.BookingId</td>
+
+                        <td>
+                            @(item.Event?.Name ?? "N/A")
+                        </td>
+
+                        <td>
+                            @(item.Event?.EventType?.Name ?? "N/A")
+                        </td>
+
+                        <td>
+                            @(item.Venue?.Name ?? "N/A")
+                        </td>
+
+                        <td>
+                            @(item.Venue?.Location ?? "N/A")
+                        </td>
+
+                        <td>
+                            @(item.Event?.StartDate.ToShortDateString() ?? "N/A")
+                        </td>
+
+                        <td>
+                            @(item.Event?.EndDate.ToShortDateString() ?? "N/A")
+                        </td>
+
+                        <td>
+                            @item.BookingDate.ToShortDateString()
+                        </td>
+
+                        <td>
+
+                            <a asp-action="Edit"
+                                   asp-route-id="@item.BookingId"
+                                   class="btn btn-primary btn-sm">
+                                Edit
+                            </a>
+
+                            <a asp-action="Delete"
+                                   asp-route-id="@item.BookingId"
+                                   class="btn btn-danger btn-sm">
+                                Delete
+                            </a>
+
+                        </td>
+
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="9"
+                        class="text-center text-muted">
+                        No bookings found.
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

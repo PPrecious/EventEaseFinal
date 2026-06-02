@@ -1,0 +1,33 @@
+﻿@model EventEase.Web.Models.Booking
+
+<h2>Edit Booking</h2>
+
+<form asp-action="Edit">
+
+    <input type="hidden"
+           asp-for="BookingId" />
+
+    <div class="mb-3">
+        <label>Event</label>
+
+        <select asp-for="EventId"
+                asp-items="ViewBag.Events"
+                class="form-select">
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Venue</label>
+
+        <select asp-for="VenueId"
+                asp-items="ViewBag.Venues"
+                class="form-select">
+        </select>
+    </div>
+
+    <button type="submit"
+            class="btn btn-primary">
+        Update Booking
+    </button>
+
+</form>

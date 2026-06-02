@@ -1,0 +1,36 @@
+﻿@model EventEase.Web.Models.EventType
+
+<form asp-action="Save" method="post">
+
+    <div class="card shadow-sm p-4">
+
+        <div class="mb-3">
+            <label class="form-label">Event Type Name</label>
+
+            <input asp-for="Name"
+                   class="form-control"
+                   placeholder="Enter event type name (e.g. Wedding, Conference)" />
+
+            <span asp-validation-for="Name"
+                  class="text-danger"></span>
+        </div>
+
+        <input type="hidden" asp-for="EventTypeId" />
+
+        <div class="d-flex justify-content-between">
+
+            <a asp-action="Index"
+                   class="btn btn-secondary">
+                Cancel
+            </a>
+
+            <button type="submit"
+                    class="btn btn-success">
+                Save Event Type
+            </button>
+
+        </div>
+
+    </div>
+
+</form>

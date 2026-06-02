@@ -1,0 +1,39 @@
+﻿@model EventEase.Web.Models.EventType
+
+@{
+    ViewData["Title"] = "Create Event Type";
+}
+
+<h2>Create Event Type</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+<div class="card p-4">
+
+    <form asp-action="Create" method="post">
+
+        @Html.Partial("~/Views/Shared/_EventTypeForm.cshtml", Model)
+
+        <button type="submit" class="btn btn-success mt-3">
+            Save Event Type
+        </button>
+
+        <a asp-action="Index" class="btn btn-secondary mt-3">
+            Cancel
+        </a>
+
+    </form>
+
+</div>

@@ -1,0 +1,58 @@
+﻿@model EventEase.Web.Models.Venue
+
+<h2>Edit Venue</h2>
+
+<form asp-action="Edit"
+      method="post"
+      enctype="multipart/form-data">
+
+    <input type="hidden" asp-for="VenueId"/>
+
+    <div class="card p-4">
+
+        <div class="mb-3">
+            <label>Name</label>
+
+            <input asp-for="Name"
+                   class="form-control"/>
+        </div>
+
+        <div class="mb-3">
+            <label>Location</label>
+
+            <input asp-for="Location"
+                   class="form-control"/>
+        </div>
+
+        <div class="mb-3">
+            <label>Capacity</label>
+
+            <input asp-for="Capacity"
+                   class="form-control"/>
+        </div>
+
+        <div class="mb-3">
+            <label>Availability</label>
+
+            <select asp-for="IsAvailable"
+                    class="form-select">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>New Image</label>
+
+            <input type="file"
+                   name="imageFile"
+                   class="form-control"/>
+        </div>
+
+        <button class="btn btn-primary">
+            Update Venue
+        </button>
+
+    </div>
+
+</form>

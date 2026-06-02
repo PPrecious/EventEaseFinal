@@ -1,0 +1,89 @@
+﻿@model EventEase.Web.Models.Venue
+
+@{
+    ViewData["Title"] = "Create Venue";
+}
+
+<h2 class="mb-4">Add New Venue</h2>
+
+<form asp-action="Create"
+      method="post"
+      enctype="multipart/form-data">
+
+    <div class="card shadow-sm p-4">
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Venue Name</label>
+
+            <input asp-for="Name"
+                   class="form-control" />
+
+            <span asp-validation-for="Name"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Location" class="form-label">Location</label>
+
+            <input asp-for="Location"
+                   class="form-control" />
+
+            <span asp-validation-for="Location"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Capacity" class="form-label">Capacity</label>
+
+            <input asp-for="Capacity"
+                   type="number"
+                   class="form-control" />
+
+            <span asp-validation-for="Capacity"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="IsAvailable" class="form-label">Availability</label>
+
+            <select asp-for="IsAvailable"
+                    class="form-select">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+
+            <span asp-validation-for="IsAvailable"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Venue Image</label>
+
+            <input type="file"
+                   name="imageFile"
+                   class="form-control" />
+        </div>
+
+        <div class="d-flex justify-content-between">
+
+            <a asp-action="Index"
+                   class="btn btn-secondary">
+                Cancel
+            </a>
+
+            <button type="submit"
+                    class="btn btn-success">
+                Save Venue
+            </button>
+
+        </div>
+
+    </div>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
